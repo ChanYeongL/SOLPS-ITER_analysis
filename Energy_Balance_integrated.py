@@ -51,7 +51,7 @@ eirene_mc_eppl_shi_bal = nc_balance['eirene_mc_eppl_shi_bal'][:]
 
 
 
-
+#watch out for the direction of the heat flux terms!
 def heat_flux(valname):
     total_heat_loc = 1000000
     fht_local = valname

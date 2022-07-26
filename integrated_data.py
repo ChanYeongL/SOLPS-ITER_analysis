@@ -8,13 +8,6 @@ import getpass
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy)
-#ssh.connect("143.248.99.71",username="chanyeong",password="satirev147")
-#print('ssh connected.')
-
-
-#sftp = ssh.open_sftp()
-#sftp.get('/home/chanyeong/solps-iter/runs/Exp_ne_zero/baserun/b2.neutrals.parameters.stencil', './holyshit.txt')
-
 
 #delete = "rm ./b2fplasmf_trial.txt"
 
