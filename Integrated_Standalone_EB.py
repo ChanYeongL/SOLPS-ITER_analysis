@@ -198,7 +198,7 @@ def heat_flux(valname):
 
 def Global_internal_energy_balance(fht,nc):
 
-    fht = np.load("./%s" %fht)
+    fht = np.load("%s" %fht)
     total_fht = heat_flux(fht)
     nc_balance = netCDF4.Dataset(nc)
     eirene_mc_eael_she_bal = nc_balance['eirene_mc_eael_she_bal'][:]
@@ -268,8 +268,8 @@ other = np.zeros(len(fname_list))
 
 
 for k in range(len(fname_list)):
-    fht_name = "fht_b2fplasmf_%s.npy" %fname_list[k]
-    nc_name = "%s_balance.nc" %fname_list[k]
+    fht_name = "/Users/chanyeonglee/LAB_local/data_postprocessing/output_new/fht_b2fplasmf_%s.npy" %fname_list[k]
+    nc_name = "/Users/chanyeonglee/LAB_local/data_postprocessing/output_new/%s_balance.nc" %fname_list[k]
     dat = Global_internal_energy_balance(fht_name,nc_name)
     out_div[k]=dat[0]
     in_div[k]=dat[1]
@@ -303,3 +303,9 @@ plt.title("Crude Power Balance")
 plt.legend(loc="lower left",bbox_to_anchor=(1.0,0.8))    
 plt.savefig("Crude_Power_Balance")
 plt.show()
+
+for data_ran in range(len(fname_list)):
+	delete_nc = "rm  '/Users/chanyeonglee/LAB_local/data_postprocessing/output_new/%s_balance.nc'" %fname_list[data_ran]
+	os.system(delete_nc)
+#nc_file  = sftp.get('%s/balance.nc'%fpath_list[data_ran], '/Users/chanyeonglee/LAB_local/data_postprocessing/output_new/%s_balance.nc' %fname_list[data_ran])
+
