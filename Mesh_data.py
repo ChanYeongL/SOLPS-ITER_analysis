@@ -296,9 +296,9 @@ def con_inner_target_dist():
     return(co_sep_out_target_dist)
 
 def SAS_inner_target_dist():
-    retrun(al_sep_in_target_dist)
+    return(al_sep_in_target_dist)
 def SAS_outer_target_dist():
-    retrun(al_sep_out_target_dist)
+    return(al_sep_out_target_dist)
     
 def con_newmesh_outer_target_dist():
     return(co_new_mesh_sep_out_target_dist)
