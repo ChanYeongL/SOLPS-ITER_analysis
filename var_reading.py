@@ -33,9 +33,6 @@ def data_picking(iwant):
 
             print(line[2])
             mesh = line[2].split()
-            nx = int(mesh[0])
-            ny = int(mesh[1])
-            ns = int(mesh[2])
 
             print(line[2])
 
@@ -147,10 +144,8 @@ def data_picking(iwant):
             else:
                 selected_data_final = selected_data_merged_deleted.reshape(ns, ny+2,nx+2)
 
-            np.save("./%s_%s" %(data_name,dum_name), selected_data_final)
-            print("./%s_%s" %(data_name,fname))
+            #np.save("./%s_%s" %(data_name,dum_name), selected_data_final)
+            #print("./%s_%s" %(data_name,fname))
 
+            return(selected_data_final)
             #selected_data_final = selected_data_merged_deleted.reshape(ns, ny+2,nx+2)
-
-            x_axis = np.linspace(1,98,98)
-            y_axis = np.linspace(1,38,38)
