@@ -11,7 +11,7 @@ ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy)
 
 #delete = "rm ./b2fplasmf_trial.txt"
 
-puff = "noNe"
+puff = "noNe_sep"
 
 ws_name = input("Choose workstation(e.g ws4) ")
 
@@ -55,23 +55,23 @@ sftp = ssh.open_sftp()
 if ws_name=='ws4':
 	fname_list = list()
 	fpath_list = list()
-#	fname_list.append("b2fplasmf_al_KSTAR_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/altergeo_sput_Ne_zero/Baseline_KSTAR/b2fplasmf")
-#	fname_list.append("b2fplasmf_al_ITER_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/altergeo_sput_Ne_zero/ITER_Heating/b2fplasmf")
-#	fname_list.append("b2fplasmf_al_KDEMO_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/altergeo_sput_Ne_zero/KDEMO_Heating")
+	fname_list.append("b2fplasmf_co_1e19_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_sep_density/1e19_KSTAR")
+	fname_list.append("b2fplasmf_co_2e19_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_sep_density/1e19_KSTAR")
+	fname_list.append("b2fplasmf_co_3e19_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_sep_density/1e19_KSTAR")
 #	fname_list.append("b2fplasmf_co_KDEMO_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/KDEMO_Heating")
 
 #fname_list.append("b2fstate_al_3e7P_%s" %puff)
 
-#	fname_list.append("b2fplasmf_co_KSTAR_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/Baseline_KSTAR/b2fplasmf")
-#	fname_list.append("b2fplasmf_co_ITER_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/ITER_Heating/b2fplasmf")
+#	fname_list.append("b2fplasmf_co_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
+#	fname_list.append("b2fplasmf_co_16MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
 #	fname_list.append("b2fplasmf_co_32MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_Ne_3e19/1.6e17Heating/b2fplasmf")a
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/32MW_Con")
 
 #	fname_list.append("b2fplasmf_SAS_32MW_Ne_zero")
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_zero/32MW_Heating/b2fplasmf")
@@ -83,11 +83,11 @@ if ws_name=='ws4':
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/con_Ne_3e19/32MW_Heating/b2fplasmf")
 
 
-	fname_list.append("b2fplasmf_new_mesh_al_Ne_zero")
-	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_zero/Baseline_KSTAR")
+#	fname_list.append("b2fplasmf_new_mesh_al_Ne_zero")
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_zero/Baseline_KSTAR")
 
-	fname_list.append("b2fplasmf_co_Ne_zero")
-	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/Baseline_KSTAR")
+#	fname_list.append("b2fplasmf_co_Ne_zero")
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/Baseline_KSTAR")
 
 #	fname_list.append("b2fplasmf_co_32MW_Ne_3e19")
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/con_Ne_3e19/32MW_Heating/b2fplasmf")
@@ -145,7 +145,7 @@ for data_ran in range(len(fname_list)):
 #	file = "scp chanyeong@143.248.99.71:/%s ./b2fplasmf_trial.txt" %fpath_list[data_ran] #ws4
 
 	fname =  "./%s.txt" %fname_list[data_ran]
-	file = sftp.get('/%s/b2fplasmf'%fpath_list[data_ran], './%s' %fname)
+	file = sftp.get('%s/b2fplasmf' %fpath_list[data_ran], './%s' %fname)
 	sftp.get('/%s/fort.44'%fpath_list[data_ran], './%s/fort44_%s' %(output_dir, fname_list[data_ran]))
 
 #	file = "scp chanyeong@143.248.98.247:/%s ./b2fplasmf_trial.txt" %fpath_list[data_ran] #ws3

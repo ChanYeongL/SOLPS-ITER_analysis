@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import reconstructing
 
 
 
@@ -9,12 +9,12 @@ ny = 36
 nx = 96
 
 
-co_mesh = 
-co_mesh_x = 
-co_mesh_y = 
+co_mesh = reconstructing.selected_mesh_final
+co_mesh_x = reconstructing.x_selected_data_final
+co_mesh_y = reconstructing.y_selected_data_final
 
 
-co_facing = 
+#co_facing = 
 
 
 
@@ -97,15 +97,13 @@ for i in range(ny+2):
 
 
 
-
-
-    
 for i in range(20):
     conv_Xpt_dist[i] = co_distance_center([78,18],[78+i,18])
 
     
 def in_target_dist():
     return(co_sep_in_target_dist)
+
 def out_target_dist():
     return(co_sep_out_target_dist)
 

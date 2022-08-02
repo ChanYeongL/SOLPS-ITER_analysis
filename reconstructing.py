@@ -57,7 +57,6 @@ full_length = np.size(data_array)
 k1 = np.zeros(k)
 
 
-print(line[2])
 mesh = line[2].split()
 nx = int(mesh[0])
 ny = int(mesh[1])
@@ -177,38 +176,11 @@ for i in range(y_start,y_end+1):
 #            #print(dum3)
 #        elif j+1>len(dum):
 #            continue
-print("selected x" , x_selected_data)
-print("selected x" , np.shape(x_selected_data))
 
-
-print(x_selected_length)
-print(np.shape(x_selected_data))
 x_numerical_len = np.shape(x_selected_data)[0]*np.shape(x_selected_data)[1]
 
-print("data len : ", x_numerical_len)
-print("before end", line[x_end-1])
-print("end", line[x_end])
-print("next data", line[x_end+1])
-
-
-print("start", raw_data[x_start+1,:])
-
-
-print("selected y" , y_selected_data)
-print("selected y" , np.shape(y_selected_data))
-
-
-print(y_selected_length)
-print(np.shape(y_selected_data))
 y_numerical_len = np.shape(y_selected_data)[0]*np.shape(y_selected_data)[1]
 
-print("data len : ", y_numerical_len)
-print("before end", line[y_end-1])
-print("end", line[y_end])
-print("next data", line[y_end+1])
-
-
-print("start", raw_data[y_start+1,:])
 
 
 np.shape(x_selected_data)
@@ -249,14 +221,6 @@ y_center_data_final_fl = np.squeeze(y_center_data_final)
 
 
 selected_mesh_final = np.concatenate((x_center_data_final,y_center_data_final),axis=1)
-
-
-
-
-
-
-
-
 
 
 
