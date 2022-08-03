@@ -1,0 +1,18 @@
+alias 2 'cd /home/jhhwang/solps-iter-210916 && source setup.csh'
+alias 11 'cd /home/chanyeong/solps-iter/ && source setup.csh'
+alias 3 'cd /home/jhhwang/solps-iter-220327 && source setup.csh'
+alias hoorun 'b2run b2mn < input.dat > run.log &'
+alias ok 'b2fstate_OK'
+alias prt 'python find_b2mnprt.py'
+alias prerun 'cp b2fstate b2fstati && cp b2fstate b2fstate_`date '+%Y%m%d'` && rm b2mn.prt && rm run.log*'
+
+alias workdir 'cp ./../baserun/*stencil ./ && mv b2.boundary.parameters.stencil b2.boundary.parameters && mv b2ah.dat.stencil b2ah.dat && mv b2.neutrals.parameters.stencil b2.neutrals.parameters && cp /home/chanyeong/solps-iter/runs/altergeo_Ne_3e19/Baseline_KSTAR/b2.numerics.parameters ./ && setup_baserun_eirene_links' 
+
+alias after 'python3 /home/chanyeong/solps-iter/End_SOLPS.py && bash /home/chanyeong/afterrun.sh'
+
+alias new_run 'setup_baserun_eirene_links && python3.6 /home/chanyeong/solps-iter/Run_SOLPS.py'
+alias new_b2fplasmf 'cp b2fstate b2fstati && python3 /home/chanyeong/solps-iter/Run_b2fplasmf.py'
+alias b2wdat 'python3 /home/chanyeong/solps-iter/Run_b2wdat_iout.py'
+set LC_CTYPE=en_US.UTF-8
+
+alias trash 'rm *last10 && rm fort* && rm *prt && rm b2fstat* && b2run b2ai'
