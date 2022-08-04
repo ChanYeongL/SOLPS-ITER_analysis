@@ -4,8 +4,8 @@ from mpl_toolkits.mplot3d import axes3d
 
 import netCDF4
 
-file_location = input("Insert location of balance.nc file : ")
-nc_balance = netCDF4.Dataset(file_location)
+#file_location = input("Insert location of balance.nc file : ")
+nc_balance = netCDF4.Dataset("balance_SAS_Ne0_32MW.nc")
 
 fhi_32      = nc_balance['fhi_32'][:]
 fhi_52      = nc_balance['fhi_52'][:]
@@ -79,7 +79,7 @@ def eirene_sum():
     sum_eirene_mc_eipl_shi_bal = np.sum(eirene_mc_eipl_shi_bal)
     sum_eirene_mc_eppl_shi_bal = np.sum(eirene_mc_eppl_shi_bal)
     
-    return (sum_eirene_mc_eael_she_bal+sum_eirene_mc_emel_she_bal+sum_eirene_mc_eiel_she_bal+sum_eirene_mc_epel_she_bal +sum_eirene_mc_eapl_shi_bal+sum_eirene_mc_eapl_shi_bal+sum_eirene_mc_eapl_shi_bal+sum_eirene_mc_eapl_shi_bal)/1000000
+    return (sum_eirene_mc_eael_she_bal+sum_eirene_mc_emel_she_bal+sum_eirene_mc_eiel_she_bal+sum_eirene_mc_epel_she_bal +sum_eirene_mc_eapl_shi_bal)#+sum_eirene_mc_empl_shi_bal+sum_eirene_mc_eipl_shi_bal+sum_eirene_mc_eppl_shi_bal)/1000000
 
 def other_source():
     heat_source= np.sum(nc_balance['b2srst_shi_bal'][:])+np.sum(nc_balance['b2srst_she_bal'][:])

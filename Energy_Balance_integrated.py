@@ -4,8 +4,8 @@ from mpl_toolkits.mplot3d import axes3d
 
 import netCDF4
 
-file_location = input("Insert location of balance.nc file : ")
-nc_balance = netCDF4.Dataset(file_location)
+#file_location = input("Insert location of balance.nc file : ")
+nc_balance = netCDF4.Dataset('balance_SAS_Ne0_32MW.nc')
 
 fhi_32      = nc_balance['fhi_32'][:]
 fhi_52      = nc_balance['fhi_52'][:]

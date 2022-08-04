@@ -14,15 +14,28 @@ fname_list = list()
 fpath_list = list()
 base_list  = list()
 data_list = list()
+puff = "noNe"
 
 ssh=paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy)
-fname_list.append("co_Ne_0_KSTAR")
-fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/Baseline_KSTAR")
-    
-fname_list.append("new_mesh_al_Ne_0_KSTAR")
-fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_zero/Baseline_KSTAR")
+fname_list = list()
+fpath_list = list()
 
+fname_list.append("b2fplasmf_co_8MW_%s" %puff)
+fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
+#fname_list.append("b2fplasmf_co_16MW_%s" %puff)
+#fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
+#fname_list.append("b2fplasmf_co_32MW_%s" %puff)
+#fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/32MW_Con")
+
+fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
+fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/2_5MW_SAS")
+#fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
+#fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/8MW_SAS")
+#fname_list.append("b2fplasmf_SAS_16MW_%s" %puff)
+#fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/16MW_SAS")
+#fname_list.append("b2fplasmf_SAS_32MW_%s" %puff)
+#fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/32MW_SAS")
 
 ID = input("Insert ID : ")
 pw = getpass.getpass("Insert P.W : ")
@@ -223,7 +236,7 @@ def Global_internal_energy_balance(fht,nc):
         sum_eirene_mc_eipl_shi_bal = np.sum(eirene_mc_eipl_shi_bal)
         sum_eirene_mc_eppl_shi_bal = np.sum(eirene_mc_eppl_shi_bal)
 
-        return (sum_eirene_mc_eael_she_bal+sum_eirene_mc_emel_she_bal+sum_eirene_mc_eiel_she_bal+sum_eirene_mc_epel_she_bal +sum_eirene_mc_eapl_shi_bal+sum_eirene_mc_eapl_shi_bal+sum_eirene_mc_eapl_shi_bal+sum_eirene_mc_eapl_shi_bal)/1000000
+        return (sum_eirene_mc_eael_she_bal+sum_eirene_mc_emel_she_bal+sum_eirene_mc_eiel_she_bal+sum_eirene_mc_epel_she_bal +sum_eirene_mc_eapl_shi_bal+sum_eirene_mc_empl_shi_bal+sum_eirene_mc_eipl_shi_bal+sum_eirene_mc_eppl_shi_bal)/1000000
 
     def radiation_loss():
         stel_terms  = np.sum(nc_balance['b2stel_she_bal'][:])+np.sum(nc_balance['b2stel_she_ion_bal'][:])+np.sum(nc_balance['b2stel_she_rec_bal'][:])+np.sum(nc_balance['b2stel_shi_ion_bal'][:])+np.sum(nc_balance['b2stel_shi_rec_bal'][:]) 
@@ -255,7 +268,7 @@ def Global_internal_energy_balance(fht,nc):
 #    plt.axhline(color = 'black',linewidth = 0.5)
 
     plt.show()
-    return [heat_flux(fht)[0],heat_flux(fht)[1],heat_flux(fht)[2]+heat_flux(fht)[3]+heat_flux(fht)[4],-eirene_sum(),-radiation_loss(),-other_source()]
+    return [heat_flux(fht)[0],heat_flux(fht)[1],heat_flux(fht)[2]+heat_flux(fht)[3]+heat_flux(fht)[4],-eirene_sum(),-radiation_loss(),-other_source()-heating_terms()]
 
     
 out_div = np.zeros(len(fname_list))
@@ -264,8 +277,6 @@ in_div = np.zeros(len(fname_list))
 neutral_loss = np.zeros(len(fname_list))
 rad_loss = np.zeros(len(fname_list))
 other = np.zeros(len(fname_list))
-
-
 
 for k in range(len(fname_list)):
     fht_name = "/Users/chanyeonglee/LAB_local/data_postprocessing/output_new/fht_b2fplasmf_%s.npy" %fname_list[k]
