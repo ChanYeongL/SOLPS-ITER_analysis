@@ -24,7 +24,7 @@ with open(text_file_path,'r') as f:
 with open(text_file_path,'w') as f:
     f.write(new_text_content)
 
-subprocess.run(["b2run", " ","b2uf"])
+#subprocess.run(["b2run", " ","b2uf"])
 
-f = open("/home/chanyeong/solps-iter/ex_log.txt", "a")
-f.write("I formatted %s at %s \n" %(current_dir, time))
+#f = open("/home/chanyeong/solps-iter/ex_log.txt", "a")
+#f.write("I formatted %s at %s \n" %(current_dir, time))

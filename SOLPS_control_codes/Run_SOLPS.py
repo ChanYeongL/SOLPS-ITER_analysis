@@ -24,9 +24,10 @@ with open(text_file_path,'r+', encoding = "utf-8") as f:
 		else:
 			new_text_content += '\n'
 
+with open(text_file_path,'w') as f:
+    f.write(new_text_content)
 
+#subprocess.run(["kstarsubmit", "-j", "%s"%run_name ,"-m", "--np %i" %core_num])
 
-subprocess.run(["kstarsubmit", "-j", "%s"%run_name ,"-m", "--np %i" %core_num])
-
-f = open("/home/chanyeong/solps-iter/ex_log.txt", "a")
-f.write("I execute %s in %s at %s \n" %(run_name, current_dir, time))
+#f = open("/home/chanyeong/solps-iter/ex_log.txt", "a")
+#f.write("I execute %s in %s at %s \n" %(run_name, current_dir, time))

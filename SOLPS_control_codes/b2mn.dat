@@ -1,0 +1,58 @@
+*label          (lblmn, character*60; free format)
+'KSTAR : no drifts : D+C'
+*b2cmpa         basic parameters
+*b2cmpb         boundary conditions
+*b2cmpt  transport coefficients
+*endphy
+'b2mndr_ntim'   '1000000'
+'b2mndr_elapsed' '259200'
+'b2mndr_dtim'	'1.0e-7'
+'b2mndr_stim'	'0.0'
+'b2mndt_nstg0'	'1'
+'b2mndt_nstg1'	'1'
+'b2mndt_nstg2'	'1'
+'b2mndt_rxf'	'0.5'
+'b2mndr_mvinc'	'1'
+'b2mndr_mvnum'	'0'
+'b2mndr_b2time'	'10'
+'b2mndr_cpu'	'259200.0'
+'b2mndr_savecpu'	'7200.0'
+'b2mndr_tally'	'1'
+'tallies_netcdf'	'1'
+'b2trcl_lluciani' '1'
+'b2stbc_sna0ep'	'1.0e-10'
+'b2news_potit'	'100'
+'b2news_potitmin'	'5'
+'b2news_potok'	'1e-2'
+'b2stbc_boundary_namelist'	'1'
+'b2srdt_numerics_namelist'	'1'
+'b2tqna_transport_namelist'	'1'
+'balance_netcdf'   '1'  # Turn on this switch for the last run
+######sput#######*********************
+'b2stbr_sput_dst'  '-1'
+'b2stbr_sput_chem_model' '0'
+'b2stbr_sput_phys'       '0'
+'b2stbr_sput_frc'        '0'
+**************************************
+'b2mwti_jxi'	'29'
+'b2mwti_jxa'	'53'
+*******#####Eirene turn on/off********
+'b2mndr_eirene'	'1'
+'b2mndr_rescale_neutrals' '1.0'
+'b2mndr_rescale_neutrals_sources'  '1.0e-10'
+**************************************
+!feedback condition
+!'b2stbc_isfeedback'	'0'
+!'b2stbc_feedback'       '1'
+!'b2stbc_nesepm_sol'	'1.5e19'
+*#! 'b2news_no_solve'       '-8'
+**************************************
+!'b2tqna_inputfile' '1'
+'b2stbr_sna_corr' '10.0'
+'b2npmo_ion_vlct_restrict' '2'
+!'b2npmo_vlct_diagno' '2'
+
+!'ank_tracing' '1'
+
+'eirene_ionizing_core' '1'
+!’b2wdat_iout’ ’4’
