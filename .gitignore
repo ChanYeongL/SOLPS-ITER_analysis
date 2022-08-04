@@ -189,3 +189,10 @@ Crude_Power_Balance.png
 .vscode/dryrun.log
 .vscode/settings.json
 .vscode/targets.log
+data_Heating_Geo/fch_b2fplasmf_co_8MW_noNe_sep.npy
+data_Heating_Geo/fch_b2fplasmf_co_16MW_noNe_sep.npy
+data_Heating_Geo/fch_b2fplasmf_co_32MW_noNe_sep.npy
+data_Heating_Geo/fch_b2fplasmf_SAS_8MW_noNe_sep.npy
+data_Heating_Geo/fch_b2fplasmf_SAS_16MW_noNe_sep.npy
+data_Heating_Geo/fch_b2fplasmf_SAS_32MW_noNe_sep.npy
+SOLPS_control_codes/b2fplasmf_SAS_8MW_noNe_sep.txt

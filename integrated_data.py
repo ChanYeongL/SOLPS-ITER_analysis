@@ -55,25 +55,25 @@ sftp = ssh.open_sftp()
 if ws_name=='ws4':
 	fname_list = list()
 	fpath_list = list()
-	fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/2_5MW_SAS")
 #	fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/8MW_SAS")
-#	fname_list.append("b2fplasmf_SAS_16MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/16MW_SAS")
-#	fname_list.append("b2fplasmf_SAS_32MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/32MW_SAS")
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/2_5MW_SAS")
+	fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/8MW_SAS")
+	fname_list.append("b2fplasmf_SAS_16MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/16MW_SAS")
+	fname_list.append("b2fplasmf_SAS_32MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/32MW_SAS")
 #	fname_list.append("b2fplasmf_co_KDEMO_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/KDEMO_Heating")
 
 #fname_list.append("b2fstate_al_3e7P_%s" %puff)
 
-#	fname_list.append("b2fplasmf_co_8MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
-#	fname_list.append("b2fplasmf_co_16MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
-#	fname_list.append("b2fplasmf_co_32MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/32MW_Con")
+	fname_list.append("b2fplasmf_co_8MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
+	fname_list.append("b2fplasmf_co_16MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
+	fname_list.append("b2fplasmf_co_32MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/32MW_Con")
 
 #	fname_list.append("b2fplasmf_SAS_32MW_Ne_zero")
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_zero/32MW_Heating/b2fplasmf")
@@ -114,6 +114,7 @@ elif ws_name=='ws3':
 	fpath_list.append("home/chanyeong/solps-iter/runs/convgeo_Ne_3e16/Baseline_KSTAR/b2fplasmf")
 
 data_list = list()
+"""
 data_list.append("fht")
 data_list.append("fhi")
 data_list.append("fhe")
@@ -129,7 +130,9 @@ data_list.append("rcxhi")
 data_list.append("rsana")
 data_list.append("rsahi")
 data_list.append("po")
+"""
 
+data_list.append("fch")
 
 nx = 96
 ny = 36

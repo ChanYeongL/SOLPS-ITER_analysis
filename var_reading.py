@@ -1,16 +1,16 @@
 import numpy as np
 
 
-fname_list = list()
-fname_list.append("b2fplasmf")
+
 
 
 
 data_list = list()
 
-def data_picking(iwant):
+def data_picking(iwant, loc):
     data_list.append(iwant)
-
+    fname_list = list()
+    fname_list.append(loc) 
 
     nx = 96
     ny = 36
@@ -18,7 +18,7 @@ def data_picking(iwant):
 
     for date_ran in range(len(fname_list)):
         dum_name = fname_list[date_ran]
-        fname = "./%s" %dum_name
+        fname = "%s" %dum_name
         with open(fname,'r') as f:
             line = f.readlines()    
         a=type(line)
