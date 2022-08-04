@@ -1,7 +1,5 @@
 import numpy as np
 
-def fuck():
-    return 21
 
 def eir(dir, spec):
     with open("%s/fort44_b2fplasmf_%s" %(dir, spec),'r') as f:
