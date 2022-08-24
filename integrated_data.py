@@ -1,3 +1,4 @@
+from genericpath import isdir
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
@@ -5,13 +6,14 @@ import pickle
 import os, sys
 import paramiko
 import getpass
+import fort44_reader
+
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy)
 
 #delete = "rm ./b2fplasmf_trial.txt"
 
-puff = "noNe_sep"
 
 ws_name = input("Choose workstation(e.g ws4) ")
 
@@ -51,48 +53,121 @@ elif ws_name=='ws5':
 sftp = ssh.open_sftp()
 
 
+#puff = "Ne_0" #Neon puff zero
+puff = "Ne_3e19" #Neon puff 3e19
+#puff = "Ne_0_sep_density"
+
+
 #ws4
 if ws_name=='ws4':
 	fname_list = list()
 	fpath_list = list()
-#	fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
+ #new g file section
+ 
+#	fname_list.append("b2fplasmf_SAS_new_gfile_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_another_gfile/8MW_SAS_New_gfile")	
+ 
+ 
+ #2022 08 07 now, new-mesh is standard
+ 
+ #SAS - Heating
+#	fname_list.append("b2fplasmf_SAS_2_5MW_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/2_5MW_SAS")
-	fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/8MW_SAS")
-	fname_list.append("b2fplasmf_SAS_16MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/16MW_SAS")
-	fname_list.append("b2fplasmf_SAS_32MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/32MW_SAS")
-#	fname_list.append("b2fplasmf_co_KDEMO_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/KDEMO_Heating")
-
-#fname_list.append("b2fstate_al_3e7P_%s" %puff)
-
-	fname_list.append("b2fplasmf_co_8MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
-	fname_list.append("b2fplasmf_co_16MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
-	fname_list.append("b2fplasmf_co_32MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/32MW_Con")
-
-#	fname_list.append("b2fplasmf_SAS_32MW_Ne_zero")
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_zero/32MW_Heating/b2fplasmf")
-
-#	fname_list.append("b2fplasmf_co_32MW_Ne_zero")
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/con_Ne_zero/32MW_Heating/b2fplasmf")
-
-#	fname_list.append("b2fplasmf_co_32MW_Ne_3e19")
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/con_Ne_3e19/32MW_Heating/b2fplasmf")
+#	fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/8MW_SAS")
+#	fname_list.append("b2fplasmf_SAS_16MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/16MW_SAS")
+#	fname_list.append("b2fplasmf_SAS_32MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/32MW_SAS")
 
 
-#	fname_list.append("b2fplasmf_new_mesh_al_Ne_zero")
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_zero/Baseline_KSTAR")
+#	fname_list.append("b2fplasmf_SAS_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_e19_Heating/8MW_SAS_Ne19")
 
-#	fname_list.append("b2fplasmf_co_Ne_zero")
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/conventionalgeo_no_neon/Baseline_KSTAR")
 
-#	fname_list.append("b2fplasmf_co_32MW_Ne_3e19")
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/con_Ne_3e19/32MW_Heating/b2fplasmf")
+#SAS - another g file
+#	fname_list.append("b2fplasmf_SAS_2_5MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/2_5MW_SAS")
+#	fname_list.append("b2fplasmf_SAS_new_g_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_another_gfile/8MW_SAS_New_gfile")
+#	fname_list.append("b2fplasmf_SAS_new_g_16MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_another_gfile/16MW_SAS_New_gfile")
+#	fname_list.append("b2fplasmf_SAS_new_g_32MW_%s" %puff)
+#ws	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_another_gfile/32MW_SAS_New_gfile")
+
+
+#SAS - sep density
+	#puff = "sep_density"
+#	fname_list.append("b2fplasmf_SAS_8MW_1e18_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_8MW_sep_density/1e18_SAS_8MW")
+#	fname_list.append("b2fplasmf_SAS_8MW_05e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_8MW_sep_density/0_5e19_SAS_8MW")
+#	fname_list.append("b2fplasmf_SAS_8MW_1e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_8MW_sep_density/1e19_SAS_8MW")
+#	fname_list.append("b2fplasmf_SAS_8MW_2e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_8MW_sep_density/2e19_SAS_8MW")
+#	fname_list.append("b2fplasmf_SAS_8MW_3e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_8MW_sep_density/3e19_SAS_8MW")
+#	fname_list.append("b2fplasmf_SAS_8MW_4e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_8MW_sep_density/4e19_SAS_8MW")
+#	fname_list.append("b2fplasmf_SAS_8MW_5e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_8MW_sep_density/5e19_SAS_8MW") 
+ 
+#SAS - another version
+#	fname_list.append("b2fplasmf_Ex_SAS_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_zero/EX_8MW_Heating")
+#	fname_list.append("b2fplasmf_Ex_SAS_16MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_zero/EX_8MW_Heating")
+#	fname_list.append("b2fplasmf_Ex_SAS_32MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_zero/32MW_Heating")
+ 
+ 
+#SAS - another version with impurities
+	fname_list.append("b2fplasmf_Ex_SAS_8MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs//Exp_ne_3e19/8MW_ESAS_Heating")
+#	fname_list.append("b2fplasmf_Ex_SAS_16MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_zero/EX_8MW_Heating")
+	fname_list.append("b2fplasmf_Ex_SAS_32MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_3e19/32MW_ESAS_Heating")
+
+
+#Con - sep density
+	#puff = "sep_density"
+#	fname_list.append("b2fplasmf_co_8MW_1e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_8MW_sep_density/1e19Con")
+#	fname_list.append("b2fplasmf_co_8MW_2e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_8MW_sep_density/2e19Con")
+#	fname_list.append("b2fplasmf_co_8MW_3e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_8MW_sep_density/3e19Con")
+#	fname_list.append("b2fplasmf_co_8MW_4e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_8MW_sep_density/4e19Con")
+#	fname_list.append("b2fplasmf_co_8MW_5e19_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_8MW_sep_density/5e19Con") 
+ 
+#Conventional - Heating
+#	fname_list.append("b2fplasmf_co_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
+#	fname_list.append("b2fplasmf_co_16MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
+#	fname_list.append("b2fplasmf_co_20MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/20MW_Con_Ne0")
+#	fname_list.append("b2fplasmf_co_32MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/32MW_Con")
+
+
+#	fname_list.append("b2fplasmf_co_32MW_re_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/new_32MW_Con_Ne0")
+
+
+
+#Conventional - Heating(3e19)
+#	fname_list.append("b2fplasmf_co_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_e19_Heating/8MW_Con")
+#	fname_list.append("b2fplasmf_co_16MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_e19_Heating/16MW_Con")
+#	fname_list.append("b2fplasmf_co_32MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_e19_Heating/32MW_Con")
+
 
 
 
@@ -108,16 +183,18 @@ if ws_name=='ws4':
 #densi_list.append("na")
 #densi_list.append("ne")
 
-	#ws3
-elif ws_name=='ws3':
-	fname_list.append("b2fplasmf_co_KSTAR_%s" %puff)
-	fpath_list.append("home/chanyeong/solps-iter/runs/convgeo_Ne_3e16/Baseline_KSTAR/b2fplasmf")
+#ws3
+#elif ws_name=='ws3':
+#	fname_list.append("b2fplasmf_co_KSTAR_%s" %puff)
+#	fpath_list.append("home/chanyeong/solps-iter/runs/convgeo_Ne_3e16/Baseline_KSTAR/b2fplasmf")
 
 data_list = list()
-"""
+
 data_list.append("fht")
 data_list.append("fhi")
 data_list.append("fhe")
+data_list.append("fne")
+data_list.append("fni")
 data_list.append("rqrad")
 data_list.append("na")
 data_list.append("ne")
@@ -129,10 +206,15 @@ data_list.append("rrahi")
 data_list.append("rcxhi")
 data_list.append("rsana")
 data_list.append("rsahi")
-data_list.append("po")
-"""
+#data_list.append("po")
 
-data_list.append("fch")
+#data_list.append("fmo")
+data_list.append("ua")
+data_list.append("na")
+data_list.append("fna")
+#data_list.append("fch")
+
+data_list.append("bb")
 
 nx = 96
 ny = 36
@@ -151,8 +233,11 @@ for data_ran in range(len(fname_list)):
 
 	fname =  "./%s.txt" %fname_list[data_ran]
 	file = sftp.get('%s/b2fplasmf' %fpath_list[data_ran], './%s' %fname)
-	sftp.get('/%s/fort.44'%fpath_list[data_ran], './%s/fort44_%s' %(output_dir, fname_list[data_ran]))
-
+	sftp.get('/%s/fort.44'%fpath_list[data_ran], '%s/fort44_%s' %(output_dir, fname_list[data_ran]))
+	if os.path.isdir("/Volumes/Universal/Data_storage")==True:
+		sftp.get('/%s/balance.nc'%fpath_list[data_ran], '/Volumes/Universal/Data_storage/balance_%s.nc' %fname_list[data_ran])
+	else:
+		continue
 #	file = "scp chanyeong@143.248.98.247:/%s ./b2fplasmf_trial.txt" %fpath_list[data_ran] #ws3
 
 #	os.system(file)
@@ -177,22 +262,22 @@ for data_ran in range(len(fname_list)):
 
 		raw_data = np.empty((full_length,6))
 
-		for i in range(0, full_length):
-
-			dum = line[i].split()
-			dum2 = len(dum)
-
-			for j in range(6):
-				if j+1<=len(dum):
-					dum3 = dum[j]
-
-					try:
-						raw_data[i,j] = dum3
-					except ValueError as m:
-						raw_data[i,j] = 0
+#		for i in range(0, full_length):
+#
+#			dum = line[i].split()
+#			dum2 = len(dum)
+#
+#			for j in range(6):
+#				if j+1<=len(dum):
+#					dum3 = dum[j]
+#
+#					try:
+#						raw_data[i,j] = dum3
+#					except ValueError as m:
+#						raw_data[i,j] = 0
                     #print(dum3)
-				elif j+1>len(dum):
-					continue
+#				elif j+1>len(dum):
+#					continue
 
 
 
@@ -276,10 +361,15 @@ for data_ran in range(len(fname_list)):
 			selected_data_final = selected_data_merged_deleted.reshape(ny+2,nx+2)
 		elif check_length[2]== '7448':
 			selected_data_final = selected_data_merged_deleted.reshape(2, ny+2,nx+2)
-		else:
+		elif check_length[2] == '14896':
+			selected_data_final = selected_data_merged_deleted.reshape(4, ny+2,nx+2)	
+		elif check_length[2]== '74480':
 			selected_data_final = selected_data_merged_deleted.reshape(ns, ny+2,nx+2)
+		elif check_length[2]== '148960':
+			selected_data_final = selected_data_merged_deleted.reshape(ns,2, ny+2,nx+2)
 
 		np.save("./%s/%s_%s" %(output_dir,data_name,dum_name), selected_data_final)
+		
 		print("%s_%s was saved" %(data_name,dum_name))
 
         #selected_data_final = selected_data_merged_deleted.reshape(ns, ny+2,nx+2)

@@ -14,7 +14,7 @@ co_mesh_x = reconstructing.x_selected_data_final
 co_mesh_y = reconstructing.y_selected_data_final
 
 
-#co_facing = 
+co_facing = reconstructing
 
 
 
@@ -107,3 +107,5 @@ def in_target_dist():
 def out_target_dist():
     return(co_sep_out_target_dist)
 
+def facing():
+    return(facing)

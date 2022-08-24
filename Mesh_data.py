@@ -219,66 +219,150 @@ al_Xpt_dist = np.zeros(20)
 
 
 
-for i in range(ny+2):
-    co_sep_out_midplane_dist[i] = co_distance_point([52,i,1],[52,18,1])
-    co_sep_in_midplane_dist[i]  = co_distance_point([29,i,1],[29,18,1])
-    co_sep_out_target_dist[i] = co_distance_point([96,i,1],[96,18,1])
-    co_sep_in_target_dist[i] = co_distance_point([1,i,1],[1,18,1])
+# for i in range(ny+2):
+#     co_sep_out_midplane_dist[i] = co_distance_point([52,i,1],[52,18,1])
+#     co_sep_in_midplane_dist[i]  = co_distance_point([29,i,1],[29,18,1])
+#     co_sep_out_target_dist[i] = co_distance_point([96,i,1],[96,18,1])
+#     co_sep_in_target_dist[i] = co_distance_point([1,i,1],[1,18,1])
 
 
-    co_new_mesh_sep_out_midplane_dist[i] = co_new_mesh_distance_point([52,i,1],[52,18,1])
-    co_new_mesh_sep_in_midplane_dist[i]  = co_new_mesh_distance_point([29,i,1],[29,18,1])
-    co_new_mesh_sep_out_target_dist[i] = co_new_mesh_distance_point([96,i,1],[96,18,1])
-    co_new_mesh_sep_in_target_dist[i]  = co_new_mesh_distance_point([1,i,1],[1,18,1])
+#     co_new_mesh_sep_out_midplane_dist[i] = co_new_mesh_distance_point([52,i,1],[52,18,1])
+#     co_new_mesh_sep_in_midplane_dist[i]  = co_new_mesh_distance_point([29,i,1],[29,18,1])
+#     co_new_mesh_sep_out_target_dist[i] = co_new_mesh_distance_point([96,i,1],[96,18,1])
+#     co_new_mesh_sep_in_target_dist[i]  = co_new_mesh_distance_point([1,i,1],[1,18,1])
 
-    al_sep_out_midplane_dist[i] = al_distance_point([52,i,1],[52,18,1])
-    al_sep_in_midplane_dist[i]  = al_distance_point([29,i,1],[29,18,1])
-    al_sep_out_target_dist[i] = al_distance_point([96,i,1],[96,18,1])
-    al_sep_in_target_dist[i]  = al_distance_point([1,i,1],[1,18,1])
+#     al_sep_out_midplane_dist[i] = al_distance_point([52,i,1],[52,18,1])
+#     al_sep_in_midplane_dist[i]  = al_distance_point([29,i,1],[29,18,1])
+#     al_sep_out_target_dist[i] = al_distance_point([96,i,1],[96,18,1])
+#     al_sep_in_target_dist[i]  = al_distance_point([1,i,1],[1,18,1])
 
 
-    al_new_mesh_sep_out_midplane_dist[i] = al_new_mesh_distance_point([52,i,1],[52,18,1])
-    al_new_mesh_sep_in_midplane_dist[i]  = al_new_mesh_distance_point([29,i,1],[29,18,1])
-    al_new_mesh_sep_out_target_dist[i] = al_new_mesh_distance_point([96,i,1],[96,18,1])
-    al_new_mesh_sep_in_target_dist[i]  = al_new_mesh_distance_point([1,i,1],[1,18,1])
+#     al_new_mesh_sep_out_midplane_dist[i] = al_new_mesh_distance_point([52,i,1],[52,18,1])
+#     al_new_mesh_sep_in_midplane_dist[i]  = al_new_mesh_distance_point([29,i,1],[29,18,1])
+#     al_new_mesh_sep_out_target_dist[i] = al_new_mesh_distance_point([96,i,1],[96,18,1])
+#     al_new_mesh_sep_in_target_dist[i]  = al_new_mesh_distance_point([1,i,1],[1,18,1])
     
 
-    newSAS_sep_out_midplane_dist[i] = newSAS_distance_point([52,i,1],[52,18,1])
-    newSAS_sep_in_midplane_dist[i]  = newSAS_distance_point([29,i,1],[29,18,1])
-    newSAS_sep_out_target_dist[i] = newSAS_distance_point([96,i,1],[96,18,1])
-    newSAS_sep_in_target_dist[i]  = newSAS_distance_point([1,i,1],[1,18,1])
+#     newSAS_sep_out_midplane_dist[i] = newSAS_distance_point([52,i,1],[52,18,1])
+#     newSAS_sep_in_midplane_dist[i]  = newSAS_distance_point([29,i,1],[29,18,1])
+#     newSAS_sep_out_target_dist[i] = newSAS_distance_point([96,i,1],[96,18,1])
+#     newSAS_sep_in_target_dist[i]  = newSAS_distance_point([1,i,1],[1,18,1])
     
-    if i<18:
-        co_sep_out_midplane_dist[i] = -co_sep_out_midplane_dist[i]
-        co_sep_in_midplane_dist[i]  = -co_sep_in_midplane_dist[i]
-        co_sep_out_target_dist[i] = -co_sep_out_target_dist[i]
-        co_sep_in_target_dist[i] = -co_sep_in_target_dist[i]
+#     if i<18:
+#         co_sep_out_midplane_dist[i] = -co_sep_out_midplane_dist[i]
+#         co_sep_in_midplane_dist[i]  = -co_sep_in_midplane_dist[i]
+#         co_sep_out_target_dist[i] = -co_sep_out_target_dist[i]
+#         co_sep_in_target_dist[i] = -co_sep_in_target_dist[i]
 
-        co_new_mesh_sep_out_midplane_dist[i] = -co_new_mesh_sep_out_midplane_dist[i]
-        co_new_mesh_sep_in_midplane_dist[i]  = -co_new_mesh_sep_in_midplane_dist[i]
-        co_new_mesh_sep_out_target_dist[i] = -co_new_mesh_sep_out_target_dist[i]
-        co_new_mesh_sep_in_target_dist[i] = -co_new_mesh_sep_in_target_dist[i]
-
-        
-        al_sep_out_midplane_dist[i] = -al_sep_out_midplane_dist[i]
-        al_sep_in_midplane_dist[i] = -al_sep_in_midplane_dist[i]
-        al_sep_out_target_dist[i] = -al_sep_out_target_dist[i]
-        al_sep_in_target_dist[i] = -al_sep_in_target_dist[i]
-        
-        al_new_mesh_sep_out_midplane_dist[i] = -al_new_mesh_sep_out_midplane_dist[i]
-        al_new_mesh_sep_in_midplane_dist[i] = -al_new_mesh_sep_in_midplane_dist[i]
-        al_new_mesh_sep_out_target_dist[i] = -al_new_mesh_sep_out_target_dist[i]
-        al_new_mesh_sep_in_target_dist[i] = -al_new_mesh_sep_in_target_dist[i]
+#         co_new_mesh_sep_out_midplane_dist[i] = -co_new_mesh_sep_out_midplane_dist[i]
+#         co_new_mesh_sep_in_midplane_dist[i]  = -co_new_mesh_sep_in_midplane_dist[i]
+#         co_new_mesh_sep_out_target_dist[i] = -co_new_mesh_sep_out_target_dist[i]
+#         co_new_mesh_sep_in_target_dist[i] = -co_new_mesh_sep_in_target_dist[i]
 
         
-        newSAS_sep_out_midplane_dist[i] = -newSAS_sep_out_midplane_dist[i]
-        newSAS_sep_in_midplane_dist[i] = -newSAS_sep_in_midplane_dist[i]
-        newSAS_sep_out_target_dist[i] = -newSAS_sep_out_target_dist[i]
-        newSAS_sep_in_target_dist[i] = -newSAS_sep_in_target_dist[i]
+#         al_sep_out_midplane_dist[i] = -al_sep_out_midplane_dist[i]
+#         al_sep_in_midplane_dist[i] = -al_sep_in_midplane_dist[i]
+#         al_sep_out_target_dist[i] = -al_sep_out_target_dist[i]
+#         al_sep_in_target_dist[i] = -al_sep_in_target_dist[i]
         
+#         al_new_mesh_sep_out_midplane_dist[i] = -al_new_mesh_sep_out_midplane_dist[i]
+#         al_new_mesh_sep_in_midplane_dist[i] = -al_new_mesh_sep_in_midplane_dist[i]
+#         al_new_mesh_sep_out_target_dist[i] = -al_new_mesh_sep_out_target_dist[i]
+#         al_new_mesh_sep_in_target_dist[i] = -al_new_mesh_sep_in_target_dist[i]
+
+        
+#         newSAS_sep_out_midplane_dist[i] = -newSAS_sep_out_midplane_dist[i]
+#         newSAS_sep_in_midplane_dist[i] = -newSAS_sep_in_midplane_dist[i]
+#         newSAS_sep_out_target_dist[i] = -newSAS_sep_out_target_dist[i]
+#         newSAS_sep_in_target_dist[i] = -newSAS_sep_in_target_dist[i]
+        
+for i in range(1, ny+2):
+    co_sep_out_midplane_dist[i] = co_distance_point([52,i-1,1],[52,i,1])
+    co_sep_in_midplane_dist[i]  = co_distance_point([29,i-1,1],[29,i,1])
+    co_sep_out_target_dist[i] = co_distance_point([96,i-1,1],[96,i,1])
+    co_sep_in_target_dist[i] = co_distance_point([1,i-1,1],[1,i,1])
+
+
+    co_new_mesh_sep_out_midplane_dist[i] = co_new_mesh_distance_point([52,i-1,1],[52,i,1])
+    co_new_mesh_sep_in_midplane_dist[i]  = co_new_mesh_distance_point([29,i-1,1],[29,i,1])
+    co_new_mesh_sep_out_target_dist[i] = co_new_mesh_distance_point([96,i-1,1],[96,i,1])
+    co_new_mesh_sep_in_target_dist[i]  = co_new_mesh_distance_point([1,i-1,1],[1,i,1])
+
+    al_sep_out_midplane_dist[i] = al_distance_point([52,i-1,1],[52,i,1])
+    al_sep_in_midplane_dist[i]  = al_distance_point([29,i-1,1],[29,i,1])
+    al_sep_out_target_dist[i] = al_distance_point([96,i-1,1],[96,i,1])
+    al_sep_in_target_dist[i]  = al_distance_point([1,i-1,1],[1,i,1])
+
+
+    al_new_mesh_sep_out_midplane_dist[i] = al_new_mesh_distance_point([52,i-1,1],[52,i,1])
+    al_new_mesh_sep_in_midplane_dist[i]  = al_new_mesh_distance_point([29,i-1,1],[29,i,1])
+    al_new_mesh_sep_out_target_dist[i] = al_new_mesh_distance_point([96,i-1,1],[96,i,1])
+    al_new_mesh_sep_in_target_dist[i]  = al_new_mesh_distance_point([1,i-1,1],[1,i,1])
+    
+
+    newSAS_sep_out_midplane_dist[i] = newSAS_distance_point([52,i-1,1],[52,i,1])
+    newSAS_sep_in_midplane_dist[i]  = newSAS_distance_point([29,i-1,1],[29,i,1])
+    newSAS_sep_out_target_dist[i] = newSAS_distance_point([96,i-1,1],[96,i,1])
+    newSAS_sep_in_target_dist[i]  = newSAS_distance_point([1,i-1,1],[1,i,1])
 
 
 
+co_sep_out_midplane_dist = np.cumsum(co_sep_out_midplane_dist)
+co_sep_in_midplane_dist  = np.cumsum(co_sep_in_midplane_dist)
+co_sep_out_target_dist   = np.cumsum(co_sep_out_target_dist)
+co_sep_in_target_dist    = np.cumsum(co_sep_in_target_dist)
+
+co_new_mesh_sep_out_midplane_dist= np.cumsum(co_new_mesh_sep_out_midplane_dist)
+co_new_mesh_sep_in_midplane_dist  = np.cumsum(co_new_mesh_sep_in_midplane_dist)
+co_new_mesh_sep_out_target_dist   = np.cumsum(co_new_mesh_sep_out_target_dist)
+co_new_mesh_sep_in_target_dist    = np.cumsum(co_new_mesh_sep_in_target_dist)
+
+    
+al_sep_out_midplane_dist = np.cumsum(al_sep_out_midplane_dist)
+al_sep_in_midplane_dist  = np.cumsum(al_sep_in_midplane_dist)
+al_sep_out_target_dist   = np.cumsum(al_sep_out_target_dist)
+al_sep_in_target_dist    = np.cumsum(al_sep_in_target_dist)
+    
+al_new_mesh_sep_out_midplane_dist = np.cumsum(al_new_mesh_sep_out_midplane_dist)
+al_new_mesh_sep_in_midplane_dist  = np.cumsum(al_new_mesh_sep_in_midplane_dist)
+al_new_mesh_sep_out_target_dist   = np.cumsum(al_new_mesh_sep_out_target_dist)
+al_new_mesh_sep_in_target_dist   = np.cumsum(al_new_mesh_sep_in_target_dist)
+
+
+newSAS_sep_out_midplane_dist = np.cumsum(newSAS_sep_out_midplane_dist)
+newSAS_sep_in_midplane_dist  = np.cumsum(newSAS_sep_in_midplane_dist)
+newSAS_sep_out_target_dist   = np.cumsum(newSAS_sep_out_target_dist)
+newSAS_sep_in_target_dist    = np.cumsum(newSAS_sep_in_target_dist)
+
+#print(newSAS_sep_out_target_dist)
+for k in range(19):
+    co_sep_out_midplane_dist[k] = co_sep_out_midplane_dist[k]-co_sep_out_midplane_dist[18]
+    co_sep_in_midplane_dist[k]  = co_sep_in_midplane_dist[k]-co_sep_in_midplane_dist[18]
+    co_sep_out_target_dist[k]   = co_sep_out_target_dist[k]-co_sep_out_target_dist[18]
+    co_sep_in_target_dist[k]    = co_sep_in_target_dist[k]-co_sep_in_target_dist[18]
+
+    co_new_mesh_sep_out_midplane_dist[k] = co_new_mesh_sep_out_midplane_dist[k]-co_new_mesh_sep_out_midplane_dist[18]
+    co_new_mesh_sep_in_midplane_dist[k]  = co_new_mesh_sep_in_midplane_dist[k] -co_new_mesh_sep_in_midplane_dist[18]
+    co_new_mesh_sep_out_target_dist[k]   = co_new_mesh_sep_out_target_dist[k] -co_new_mesh_sep_out_target_dist[18]
+    co_new_mesh_sep_in_target_dist[k]    = co_new_mesh_sep_in_target_dist[k] -co_new_mesh_sep_in_target_dist[18]
+
+    
+    al_sep_out_midplane_dist[k] = al_sep_out_midplane_dist[k]-al_sep_out_midplane_dist[18]
+    al_sep_in_midplane_dist[k]  = al_sep_in_midplane_dist[k]-al_sep_in_midplane_dist[18]
+    al_sep_out_target_dist[k]   = al_sep_out_target_dist[k]-al_sep_out_target_dist[18]
+    al_sep_in_target_dist[k]    = al_sep_in_target_dist[k]-al_sep_in_target_dist[18]
+    
+    al_new_mesh_sep_out_midplane_dist[k] = al_new_mesh_sep_out_midplane_dist[k]-al_new_mesh_sep_out_midplane_dist[18]
+    al_new_mesh_sep_in_midplane_dist[k]  = al_new_mesh_sep_in_midplane_dist[k]-al_new_mesh_sep_in_midplane_dist[18]
+    al_new_mesh_sep_out_target_dist[k]   = al_new_mesh_sep_out_target_dist[k]-al_new_mesh_sep_out_target_dist[18]
+    al_new_mesh_sep_in_target_dist[k]    = al_new_mesh_sep_in_target_dist[k]-al_new_mesh_sep_in_target_dist[18]
+
+    
+    newSAS_sep_out_midplane_dist[k] = newSAS_sep_out_midplane_dist[k]-newSAS_sep_out_midplane_dist[18]
+    newSAS_sep_in_midplane_dist[k]  = newSAS_sep_in_midplane_dist[k]-newSAS_sep_in_midplane_dist[18]
+    newSAS_sep_out_target_dist[k]   = newSAS_sep_out_target_dist[k]-newSAS_sep_out_target_dist[18]
+    newSAS_sep_in_target_dist[k]    = newSAS_sep_in_target_dist[k]-newSAS_sep_in_target_dist[18]
+#print(newSAS_sep_out_target_dist)
 
     
 for i in range(20):
@@ -309,8 +393,6 @@ def SAS_newmesh_outer_target_dist():
     return(al_new_mesh_sep_out_target_dist)
 def SAS_newmesh_inner_target_dist():
     return(al_new_mesh_sep_in_target_dist)
-
-
 def newSAS_outer_target_dist():
     return(newSAS_sep_out_target_dist)
 def newSAS_inner_target_dist():
