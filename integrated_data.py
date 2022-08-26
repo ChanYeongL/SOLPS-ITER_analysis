@@ -53,8 +53,8 @@ elif ws_name=='ws5':
 sftp = ssh.open_sftp()
 
 
-#puff = "Ne_0" #Neon puff zero
-puff = "Ne_3e19" #Neon puff 3e19
+puff = "Ne_0" #Neon puff zero
+#puff = "Ne_3e19" #Neon puff 3e19
 #puff = "Ne_0_sep_density"
 
 
@@ -62,14 +62,11 @@ puff = "Ne_3e19" #Neon puff 3e19
 if ws_name=='ws4':
 	fname_list = list()
 	fpath_list = list()
- #new g file section
- 
+#new g file section
 #	fname_list.append("b2fplasmf_SAS_new_gfile_8MW_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_another_gfile/8MW_SAS_New_gfile")	
  
- 
  #2022 08 07 now, new-mesh is standard
- 
  #SAS - Heating
 #	fname_list.append("b2fplasmf_SAS_2_5MW_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_Ne_0_Heating/2_5MW_SAS")
@@ -123,12 +120,21 @@ if ws_name=='ws4':
  
  
 #SAS - another version with impurities
-	fname_list.append("b2fplasmf_Ex_SAS_8MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs//Exp_ne_3e19/8MW_ESAS_Heating")
+#	fname_list.append("b2fplasmf_Ex_SAS_8MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs//Exp_ne_3e19/8MW_ESAS_Heating")
 #	fname_list.append("b2fplasmf_Ex_SAS_16MW_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_zero/EX_8MW_Heating")
-	fname_list.append("b2fplasmf_Ex_SAS_32MW_%s" %puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_3e19/32MW_ESAS_Heating")
+#	fname_list.append("b2fplasmf_Ex_SAS_32MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_3e19/32MW_ESAS_Heating")
+
+#SAS -  another version with different magnetic geometry
+#	fname_list.append("b2fplasmf_Ex_SAS_8MW_Ng_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_another_g/8MW_ESAS_Ne0")
+#	fname_list.append("b2fplasmf_Ex_SAS_16MW_Ng_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_ne_zero/EX_8MW_Heating")
+#	fname_list.append("b2fplasmf_Ex_SAS_32MW_Ng_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Exp_another_g/32MW_ESAS_Ne0_anotherG")
+
 
 
 #Con - sep density
@@ -151,8 +157,12 @@ if ws_name=='ws4':
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
 #	fname_list.append("b2fplasmf_co_20MW_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/20MW_Con_Ne0")
+	fname_list.append("b2fplasmf_co_24MW_%s" %puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/24MW_Con_Ne0")
+#	fname_list.append("b2fplasmf_co_28MW_%s" %puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/28MW_Con_Ne0")
 #	fname_list.append("b2fplasmf_co_32MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/32MW_Con")
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/new_32MW_Con_Ne0")
 
 
 #	fname_list.append("b2fplasmf_co_32MW_re_%s" %puff)
@@ -236,8 +246,8 @@ for data_ran in range(len(fname_list)):
 	sftp.get('/%s/fort.44'%fpath_list[data_ran], '%s/fort44_%s' %(output_dir, fname_list[data_ran]))
 	if os.path.isdir("/Volumes/Universal/Data_storage")==True:
 		sftp.get('/%s/balance.nc'%fpath_list[data_ran], '/Volumes/Universal/Data_storage/balance_%s.nc' %fname_list[data_ran])
-	else:
-		continue
+#	else:
+#		continue
 #	file = "scp chanyeong@143.248.98.247:/%s ./b2fplasmf_trial.txt" %fpath_list[data_ran] #ws3
 
 #	os.system(file)

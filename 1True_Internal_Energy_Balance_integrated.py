@@ -6,7 +6,7 @@ import netCDF4
 
 #file_location = input("Insert location of balance.nc file : ")
 #nc_balance = netCDF4.Dataset("./8MW_SAS_balance.nc")
-nc_balance = netCDF4.Dataset("/Volumes/Universal/Data_storage/balance_b2fplasmf_co_20MW_Ne_0.nc")
+nc_balance = netCDF4.Dataset("/Volumes/Universal/Data_storage/balance_b2fplasmf_co_32MW_Ne_0.nc")
 
 fhi_32      = nc_balance['fhi_32'][:]
 fhi_52      = nc_balance['fhi_52'][:]
