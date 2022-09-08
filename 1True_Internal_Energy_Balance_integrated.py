@@ -5,8 +5,8 @@ from mpl_toolkits.mplot3d import axes3d
 import netCDF4
 
 #file_location = input("Insert location of balance.nc file : ")
-#nc_balance = netCDF4.Dataset("./8MW_SAS_balance.nc")
-nc_balance = netCDF4.Dataset("/Volumes/Universal/Data_storage/balance_b2fplasmf_co_32MW_Ne_0.nc")
+nc_balance = netCDF4.Dataset("./balance_ng_SAS_8MW.nc")
+#nc_balance = netCDF4.Dataset("/Volumes/Universal/Data_storage/balance_b2fplasmf_co_32MW_Ne_0.nc")
 
 fhi_32      = nc_balance['fhi_32'][:]
 fhi_52      = nc_balance['fhi_52'][:]
@@ -100,7 +100,7 @@ def other_source():
     heat_source= np.sum(nc_balance['b2srst_shi_bal'][:])+np.sum(nc_balance['b2srst_she_bal'][:]) #
     print("heat source ", heat_source/1000000)
     
-
+    
     
  #   recom = np.sum(nc_balance[''])
     
@@ -145,9 +145,9 @@ x = [r'$P_{electron}$',r'$P_{ion}$',r'$P_{neutral\ loss}$',r'$P_{ionization}$',r
 y = [-sum(heat_flux(total_fhe)),-sum(heat_flux(total_fhi)),-eirene_sum(),-ionization(),-other_source()]
 plt.bar(x,y)
 plt.ylabel("MW")
-#plt.ylim([0,4])
+plt.ylim([0,4])
 plt.axhline(color = 'black',linewidth = 0.5)
-#plt.savefig("./New_plots/Internal Energy Balance 8MW SAS Ne0.png")
+plt.savefig("./New_plots/Internal Energy Balance new gfile 8MW SAS Ne0.png")
 plt.show()
 
 print(np.sum(eirene_mc_eapl_shi_bal)/1000000)

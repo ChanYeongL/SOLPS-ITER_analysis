@@ -46,6 +46,13 @@ newSAS_mesh_y = np.load("./new_SAS_geo_mesh_y.npy")
 newSAS_facing = np.load("./gs_new_SAS.npy")
 
 
+v1SAS_mesh = np.load("./v1_SAS_geo_mesh_center.npy")
+v1SAS_mesh_x = np.load("./v1_SAS_geo_mesh_y.npy")
+v1SAS_mesh_y = np.load("./v1_SAS_geo_mesh_y.npy")
+v1SAS_facing = np.load("./gs_SAS_v1.npy")
+
+
+
 
 def co_distance_center(first_point, second_point):
     x_range = x_co_meshinfo[first_point[1],first_point[0]]-x_co_meshinfo[second_point[1],second_point[0]]
@@ -108,6 +115,20 @@ def newSAS_distance_point(first_point, second_point):
     result = (x_range**2 + y_range**2)**(1/2)
     return result
 
+def v1SAS_distance_center(first_point, second_point):
+    x_range = x_v1SAS_meshinfo[first_point[1],first_point[0]]-x_v1SAS_meshinfo[second_point[1],second_point[0]]
+    y_range = y_v1SAS_meshinfo[first_point[1],first_point[0]]-y_v1SAS_meshinfo[second_point[1],second_point[0]]
+    result = (x_range**2 + y_range**2)**(1/2)
+    return result
+
+def v1SAS_distance_point(first_point, second_point):
+    x_range = v1SAS_mesh_x[first_point[2],first_point[1],first_point[0]]-v1SAS_mesh_x[second_point[2],second_point[1],second_point[0]]
+    y_range = v1SAS_mesh_y[first_point[2],first_point[1],first_point[0]]-v1SAS_mesh_y[second_point[2],second_point[1],second_point[0]]
+    result = (x_range**2 + y_range**2)**(1/2)
+    return result
+
+
+
 
 def total_pressure(ne,te,na,ti):
     pr = ne[:,:]*te[:,:] + na[1,:,:]*ti[:,:] +np.sum(na[2:9,:,:]*ti[:,:],axis = 0)+np.sum(na[9:,:,:]*ti[:,:],axis = 0)
@@ -142,6 +163,11 @@ dumx_newSAS_meshinfo = newSAS_mesh[:,0]
 dumy_newSAS_meshinfo = newSAS_mesh[:,1]
 x_newSAS_meshinfo = dumx_newSAS_meshinfo.reshape(ny+2,nx+2)
 y_newSAS_meshinfo = dumy_newSAS_meshinfo.reshape(ny+2,nx+2)
+
+dumx_v1SAS_meshinfo = v1SAS_mesh[:,0]
+dumy_v1SAS_meshinfo = v1SAS_mesh[:,1]
+x_v1SAS_meshinfo = dumx_v1SAS_meshinfo.reshape(ny+2,nx+2)
+y_v1SAS_meshinfo = dumy_v1SAS_meshinfo.reshape(ny+2,nx+2)
 
 
 #po_dumx_meshinfo = convmesh[:,0]
@@ -178,6 +204,11 @@ newSAS_sep_out_target[1] = newSAS_mesh_y[1,18,96]
 newSAS_mesh_x_cen = np.sum(newSAS_mesh_x, axis = 0)/4
 newSAS_mesh_y_cen = np.sum(newSAS_mesh_y, axis = 0)/4
 
+v1SAS_sep_out_target = np.zeros(2)
+v1SAS_sep_out_target[0] = v1SAS_mesh_x[1,18,96]
+v1SAS_sep_out_target[1] = v1SAS_mesh_y[1,18,96]
+v1SAS_mesh_x_cen = np.sum(v1SAS_mesh_x, axis = 0)/4
+v1SAS_mesh_y_cen = np.sum(v1SAS_mesh_y, axis = 0)/4
 
 
 X_point = []
@@ -210,6 +241,10 @@ newSAS_sep_in_midplane_dist = np.zeros(ny+2)
 newSAS_sep_out_target_dist = np.zeros(ny+2)
 newSAS_sep_in_target_dist = np.zeros(ny+2)
 
+v1SAS_sep_out_midplane_dist = np.zeros(ny+2)
+v1SAS_sep_in_midplane_dist = np.zeros(ny+2)
+v1SAS_sep_out_target_dist = np.zeros(ny+2)
+v1SAS_sep_in_target_dist = np.zeros(ny+2)
 
 conv_Xpt_dist = np.zeros(20)
 al_Xpt_dist = np.zeros(20)
@@ -300,11 +335,19 @@ for i in range(1, ny+2):
     al_new_mesh_sep_in_target_dist[i]  = al_new_mesh_distance_point([1,i-1,1],[1,i,1])
     
 
-    newSAS_sep_out_midplane_dist[i] = newSAS_distance_point([52,i-1,1],[52,i,1])
-    newSAS_sep_in_midplane_dist[i]  = newSAS_distance_point([29,i-1,1],[29,i,1])
-    newSAS_sep_out_target_dist[i] = newSAS_distance_point([96,i-1,1],[96,i,1])
-    newSAS_sep_in_target_dist[i]  = newSAS_distance_point([1,i-1,1],[1,i,1])
+    # newSAS_sep_out_midplane_dist[i] = newSAS_distance_point([52,i-1,1],[52,i,1])
+    # newSAS_sep_in_midplane_dist[i]  = newSAS_distance_point([29,i-1,1],[29,i,1])
+    # newSAS_sep_out_target_dist[i] = newSAS_distance_point([96,i-1,1],[96,i,1])
+    # newSAS_sep_in_target_dist[i]  = newSAS_distance_point([1,i-1,1],[1,i,1])
+    newSAS_sep_out_midplane_dist[i] = newSAS_distance_center([52,i-1,1],[52,i,1])
+    newSAS_sep_in_midplane_dist[i]  = newSAS_distance_center([29,i-1,1],[29,i,1])
+    newSAS_sep_out_target_dist[i] = newSAS_distance_center([96,i-1,1],[96,i,1])
+    newSAS_sep_in_target_dist[i]  = newSAS_distance_center([1,i-1,1],[1,i,1])
 
+    v1SAS_sep_out_midplane_dist[i] = v1SAS_distance_center([52,i-1,1],[52,i,1])
+    v1SAS_sep_in_midplane_dist[i]  = v1SAS_distance_center([29,i-1,1],[29,i,1])
+    v1SAS_sep_out_target_dist[i] = v1SAS_distance_center([96,i-1,1],[96,i,1])
+    v1SAS_sep_in_target_dist[i]  = v1SAS_distance_center([1,i-1,1],[1,i,1])
 
 
 co_sep_out_midplane_dist = np.cumsum(co_sep_out_midplane_dist)
@@ -334,6 +377,11 @@ newSAS_sep_in_midplane_dist  = np.cumsum(newSAS_sep_in_midplane_dist)
 newSAS_sep_out_target_dist   = np.cumsum(newSAS_sep_out_target_dist)
 newSAS_sep_in_target_dist    = np.cumsum(newSAS_sep_in_target_dist)
 
+v1SAS_sep_out_midplane_dist = np.cumsum(v1SAS_sep_out_midplane_dist)
+v1SAS_sep_in_midplane_dist  = np.cumsum(v1SAS_sep_in_midplane_dist)
+v1SAS_sep_out_target_dist   = np.cumsum(v1SAS_sep_out_target_dist)
+v1SAS_sep_in_target_dist    = np.cumsum(v1SAS_sep_in_target_dist)
+
 #print(newSAS_sep_out_target_dist)
 for k in range(19):
     co_sep_out_midplane_dist[k] = co_sep_out_midplane_dist[k]-co_sep_out_midplane_dist[18]
@@ -362,6 +410,11 @@ for k in range(19):
     newSAS_sep_in_midplane_dist[k]  = newSAS_sep_in_midplane_dist[k]-newSAS_sep_in_midplane_dist[18]
     newSAS_sep_out_target_dist[k]   = newSAS_sep_out_target_dist[k]-newSAS_sep_out_target_dist[18]
     newSAS_sep_in_target_dist[k]    = newSAS_sep_in_target_dist[k]-newSAS_sep_in_target_dist[18]
+    
+    v1SAS_sep_out_midplane_dist[k] = v1SAS_sep_out_midplane_dist[k]-v1SAS_sep_out_midplane_dist[18]
+    v1SAS_sep_in_midplane_dist[k]  = v1SAS_sep_in_midplane_dist[k]-v1SAS_sep_in_midplane_dist[18]
+    v1SAS_sep_out_target_dist[k]   = v1SAS_sep_out_target_dist[k]-v1SAS_sep_out_target_dist[18]
+    v1SAS_sep_in_target_dist[k]    = v1SAS_sep_in_target_dist[k]-v1SAS_sep_in_target_dist[18]
 #print(newSAS_sep_out_target_dist)
 
     
@@ -397,3 +450,8 @@ def newSAS_outer_target_dist():
     return(newSAS_sep_out_target_dist)
 def newSAS_inner_target_dist():
     return(newSAS_sep_in_target_dist)
+
+def v1SAS_outer_target_dist():
+    return(v1SAS_sep_out_target_dist)
+def v1SAS_inner_target_dist():
+    return(v1SAS_sep_in_target_dist)

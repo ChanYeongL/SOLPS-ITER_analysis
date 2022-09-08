@@ -35,10 +35,10 @@ def get_distance(first_point, second_point):
     
     return result
 #fname_or = "_co"
-fname_or = "new_SAS"
+fname_or = "_ng"
 
 
-fname = "./b2fgmtry"
+fname = "./b2fgmtry_ng"
 
 #def find_ni(fname):
 #    with open(fname) as f:
