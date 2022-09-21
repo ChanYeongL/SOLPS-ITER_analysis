@@ -164,8 +164,8 @@ if ws_name=='ws4':
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_8MW_sep_density/5e19Con") 
  
 #Conventional - Heating
-#	fname_list.append("b2fplasmf_co_8MW_%s" %puff)
-#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
+	fname_list.append("b2fplasmf_co_8MW_Ne_0") #%puff)
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
 #	fname_list.append("b2fplasmf_co_16MW_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
 #	fname_list.append("b2fplasmf_co_20MW_%s" %puff)
@@ -193,12 +193,12 @@ if ws_name=='ws4':
 
 
 #Conventional - 22839 g file(Ne 0)
-	fname_list.append("b2fplasmf_Con_22849_8MW_Ne_0")
-	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_22849_Ne0_Heating/8MW_Con_22849")
-	# fname_list.append("b2fplasmf_SAS_new_g_16MW_%s" %puff)
-	# fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_another_gfile/16MW_SAS_New_gfile")
-	fname_list.append("b2fplasmf_Con_22849_32MW_Ne_0")
-	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_22849_Ne0_Heating/32MW_Con_22849")
+	# fname_list.append("b2fplasmf_Con_22849_8MW_Ne_0")
+	# fpath_list.append("/home/chanyeong/solps-iter/runs/Con_22849_Ne0_Heating/8MW_Con_22849")
+	# # fname_list.append("b2fplasmf_SAS_new_g_16MW_%s" %puff)
+	# # fpath_list.append("/home/chanyeong/solps-iter/runs/SAS_another_gfile/16MW_SAS_New_gfile")
+	# fname_list.append("b2fplasmf_Con_22849_32MW_Ne_0")
+	# fpath_list.append("/home/chanyeong/solps-iter/runs/Con_22849_Ne0_Heating/32MW_Con_22849")
 
 
 
