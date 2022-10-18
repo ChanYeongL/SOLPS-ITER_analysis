@@ -1109,4 +1109,50 @@ sandbox.ipynb
 g024848.004000.x4_2ti.equ
 g024848.004000.x4_3times.equ
 g024848.004000.x4_re.equ
+    g024848.004000.x4.equ
+balance_Con_8MW.nc
+balance_SAS_8MW.nc
+b2fgmtry
+b2fgmtry_31642
+b2fgmtry_new_mesh_co
+b2fgmtry_new_mesh_co.txt
+b2fgmtry_Upgrade
 g024848.004000.x4.equ
+integrated_data copy.py
+integrated_data.py
+reconstruct mesh.ipynb
+Temperature_powerloss_fitting.ipynb
+Untitled1.ipynb
+Upgrade_geo_mesh_center.npy
+Upgrade_geo_mesh_x.npy
+Upgrade_geo_mesh_y.npy
+zzzz.ipynb
+data_Ar_31642/bb_b2fplasmf_31642_3500.npy
+data_Ar_31642/fhe_b2fplasmf_31642_3500.npy
+data_Ar_31642/fhi_b2fplasmf_31642_3500.npy
+data_Ar_31642/fht_b2fplasmf_31642_3500.npy
+data_Ar_31642/fna_b2fplasmf_31642_3500.npy
+data_Ar_31642/fne_b2fplasmf_31642_3500.npy
+data_Ar_31642/fni_b2fplasmf_31642_3500.npy
+data_Ar_31642/fort44_b2fplasmf_31642_3500
+data_Ar_31642/na_b2fplasmf_31642_3500.npy
+data_Ar_31642/ne_b2fplasmf_31642_3500.npy
+data_Ar_31642/rcxhi_b2fplasmf_31642_3500.npy
+data_Ar_31642/rqrad_b2fplasmf_31642_3500.npy
+data_Ar_31642/rrahi_b2fplasmf_31642_3500.npy
+data_Ar_31642/rrana_b2fplasmf_31642_3500.npy
+data_Ar_31642/rsahi_b2fplasmf_31642_3500.npy
+data_Ar_31642/rsana_b2fplasmf_31642_3500.npy
+data_Ar_31642/te_b2fplasmf_31642_3500.npy
+data_Ar_31642/ti_b2fplasmf_31642_3500.npy
+data_Ar_31642/ua_b2fplasmf_31642_3500.npy
+data_Ar_31642/vol_b2fplasmf_31642_3500.npy
+New_plots/8MW Conv T fitting.png
+New_plots/8MW SAS T fitting.png
+New_plots/g22849 heat flux SAS v. Con Ne0 8MW.png
+New_plots/g24848 heat flux SAS v. Con Ne0 8MW.png
+New_plots/Internal_Energy_Balance_8MW_SAS_Con_Ne0.png
+New_plots/new_8MW_Conv_T_fitting.png
+New_plots/new_8MW_SAS_T_fitting.png
+New_plots/SAS Con Ne0 8MW.png
+New_plots/SAS Con Ne0 32MW.png
