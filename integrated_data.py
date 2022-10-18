@@ -49,6 +49,10 @@ elif ws_name=='ws4':
 elif ws_name=='ws5':
 	ssh.connect("143.248.101.40",username="%s" %ID,password="%s" %pw)
 	print('ssh ws5 connected.')
+elif ws_name=='ws6':
+	ssh.connect("143.248.99.52",username="%s" %ID,password="%s" %pw)
+	print('ssh ws5 connected.')
+
 
 sftp = ssh.open_sftp()
 
@@ -164,8 +168,8 @@ if ws_name=='ws4':
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_8MW_sep_density/5e19Con") 
  
 #Conventional - Heating
-	fname_list.append("b2fplasmf_co_8MW_Ne_0") #%puff)
-	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
+#	fname_list.append("b2fplasmf_co_8MW_Ne_0") #%puff)
+#	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/8MW_Con")
 #	fname_list.append("b2fplasmf_co_16MW_%s" %puff)
 #	fpath_list.append("/home/chanyeong/solps-iter/runs/Con_Ne_0_Heating/16MW_Con")
 #	fname_list.append("b2fplasmf_co_20MW_%s" %puff)
@@ -200,6 +204,11 @@ if ws_name=='ws4':
 	# fname_list.append("b2fplasmf_Con_22849_32MW_Ne_0")
 	# fpath_list.append("/home/chanyeong/solps-iter/runs/Con_22849_Ne0_Heating/32MW_Con_22849")
 
+
+
+#Ar impurity
+	fname_list.append("b2fplasmf_31642_3500")
+	fpath_list.append("/home/chanyeong/solps-iter/runs/Ar_3e19_31642_014500/3MW_Ar_31642_14500")
 
 
 #Arbirary name
@@ -252,7 +261,7 @@ data_list.append("vol")
 
 nx = 96
 ny = 36
-ns = 20
+ns = 28
 
 def find_ni(fname):
     with open(fname) as f:
@@ -389,17 +398,19 @@ for data_ran in range(len(fname_list)):
 		np.shape(selected_data)
 		selected_data_merged = selected_data.reshape(numerical_len,1)
 		selected_data_merged_deleted = selected_data_merged[:tot_len,0]
-
-
+		print(selected_data_merged_deleted)
+		ns_nx_ny = str(ns*(nx+2)*(ny+2))
+		ns_nx_ny2 = str(ns*(nx+2)*(ny+2)*2)
+		print(check_length[2])
 		if check_length[2] == '3724':
 			selected_data_final = selected_data_merged_deleted.reshape(ny+2,nx+2)
 		elif check_length[2]== '7448':
 			selected_data_final = selected_data_merged_deleted.reshape(2, ny+2,nx+2)
 		elif check_length[2] == '14896':
 			selected_data_final = selected_data_merged_deleted.reshape(4, ny+2,nx+2)	
-		elif check_length[2]== '74480':
+		elif check_length[2]== ns_nx_ny:
 			selected_data_final = selected_data_merged_deleted.reshape(ns, ny+2,nx+2)
-		elif check_length[2]== '148960':
+		elif check_length[2]== ns_nx_ny2:
 			selected_data_final = selected_data_merged_deleted.reshape(ns,2, ny+2,nx+2)
 
 		np.save("./%s/%s_%s" %(output_dir,data_name,dum_name), selected_data_final)
