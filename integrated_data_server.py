@@ -8,7 +8,7 @@ import fort44_reader
 
 
 
-output_dir = input("./data_Heating_Geo_sput")
+output_dir = "./data_Heating_Geo_sput"
 
 
 	
@@ -17,7 +17,7 @@ fpath_list=[]
 
 
 
-fname_list.append("b2fplasmf_31642_14500")
+fname_list.append("b2fplasmf_31642_14500_3MW")
 fpath_list.append("/home/chanyeong/solps-iter/runs/Ar_3e19_31642_014500/3MW_Ar_31642_14500/b2fplasmf")
 
 
@@ -217,7 +217,6 @@ for data_ran in range(len(fname_list)):
 		x_axis = np.linspace(1,98,98)
 		y_axis = np.linspace(1,38,38)
 			
-
 
 
 
