@@ -142,10 +142,10 @@ def data(input_path,input_name,spec):
 	np.shape(selected_data)
 	selected_data_merged = selected_data.reshape(numerical_len,1)
 	selected_data_merged_deleted = selected_data_merged[:tot_len,0]
-	print(selected_data_merged_deleted)
+	#print(selected_data_merged_deleted)
 	ns_nx_ny = str(ns*(nx+2)*(ny+2))
 	ns_nx_ny2 = str(ns*(nx+2)*(ny+2)*2)
-	print(check_length[2])
+	#print(check_length[2])
 	if check_length[2] == '3724':
 		selected_data_final = selected_data_merged_deleted.reshape(ny+2,nx+2)
 	elif check_length[2]== '7448':

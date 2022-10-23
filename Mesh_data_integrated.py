@@ -15,7 +15,7 @@ def check_float(element):
     
     if element.isdigit():
       newelement = float(element)
-      print('string is valid')
+    #  print('string is valid')
 
     elif (partition[0].isdigit() and partition[1] == '.' and partition[2].isdigit()) or (partition[0] == '' and partition[1] == '.' and partition[2].isdigit()) or (partition[0].isdigit() and partition[1] == '.' and partition[2] == ''):
             newelement = float(element)
@@ -319,7 +319,6 @@ def mesh_data(fname):
     with open(fname,'r') as f:
         line = f.readlines()
         #line_1 = line.split()
-
     a=type(line)
     k = len(line)
     data_array = np.array(line)
@@ -403,10 +402,7 @@ def mesh_data(fname):
             y_end = ch2-1
             break;
             
-        
 
-
-    #print(line[position_end])
     x_check_length = line[x_start-1].split()
     x_tot_len =int(x_check_length[2])
 
@@ -436,21 +432,11 @@ def mesh_data(fname):
         for j in range(dum2):
             dum3 = dum[j]
             y_selected_data[i-y_start,j] = dum3    
-    #    for j in range(6):
-    #        if j+1<=len(dum):
-    #            dum3 = dum[j]
-    #            try:
-    #                selected_data[i-position_start,j] = dum3
-    #            except ValueError as m:
-    #                selected_data[i-position_start,j] = 0.0
-    #            #print(dum3)
-    #        elif j+1>len(dum):
-    #            continue
+
 
     x_numerical_len = np.shape(x_selected_data)[0]*np.shape(x_selected_data)[1]
 
     y_numerical_len = np.shape(y_selected_data)[0]*np.shape(y_selected_data)[1]
-
 
 
     np.shape(x_selected_data)
@@ -503,7 +489,9 @@ def mesh_data(fname):
     ny = 36
     nx = 96
 #    print("Included data(in order) : inner target distance, outer targer distance, ")
-    return selected_mesh_final
+    x_mesh = np.reshape(selected_mesh_final[:,0], (ny+2, nx+2))
+    y_mesh = np.reshape(selected_mesh_final[:,1], (ny+2, nx+2))
+    return x_mesh, y_mesh
 
 
 
