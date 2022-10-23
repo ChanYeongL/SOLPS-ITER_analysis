@@ -117,7 +117,7 @@ def eir_spec(dir, spec):
     
     ion_rad_array = np.vstack([po_nul, ion_rad_array])
     ion_rad_array = np.hstack([ra_nul, ion_rad_array])
-    print(np.shape(ion_rad_array))
+    #print(np.shape(ion_rad_array))
     return neu_rad_array,mol_rad_array,ion_rad_array
 #print(np.shape(ion_rad_array))
 
