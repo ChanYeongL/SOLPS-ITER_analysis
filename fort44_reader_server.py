@@ -91,8 +91,7 @@ def eir_spec(dir):
         if "*eirene" in data_array[j]:
             break;
         else:
-            
-        damn_array = np.array(data_array[j].split())
+            damn_array = np.array(data_array[j].split())
             #print(damn_array.astype(np.float64))
             total_ion_rad += np.sum(damn_array.astype(np.float64))
             

@@ -10,19 +10,19 @@ def is_valid_float(element: str) -> bool:
     except ValueError:
         return False
     
-def check_float(element):
-    partition = element.partition('.')
+# def check_float(element):
+#     partition = element.partition('.')
     
-    if element.isdigit():
-      newelement = float(element)
-    #  print('string is valid')
+#     if element.isdigit():
+#       newelement = float(element)
+#     #  print('string is valid')
 
-    elif (partition[0].isdigit() and partition[1] == '.' and partition[2].isdigit()) or (partition[0] == '' and partition[1] == '.' and partition[2].isdigit()) or (partition[0].isdigit() and partition[1] == '.' and partition[2] == ''):
-            newelement = float(element)
-            #print(newelement)
-            #print("String is also valid !")
-    else:
-        print("string is not valid !")
+#     elif (partition[0].isdigit() and partition[1] == '.' and partition[2].isdigit()) or (partition[0] == '' and partition[1] == '.' and partition[2].isdigit()) or (partition[0].isdigit() and partition[1] == '.' and partition[2] == ''):
+#             newelement = float(element)
+#             #print(newelement)
+#             #print("String is also valid !")
+#     else:
+#        print("string is not valid !")
 # def is_valid_string(element):
 #     if element.isdigit():
 #         print("String is valid")
@@ -30,15 +30,13 @@ def check_float(element):
 #         print("String is not valid")
 
 def get_distance(first_point, second_point):
-   
     x_range = x_center_data[first_point[1],first_point[0]]-x_center_data[second_point[1],second_point[0]]
     y_range = y_center_data[first_point[1],first_point[0]]-y_center_data[second_point[1],second_point[0]]
-    
     result = (x_range**2 + y_range**2)**(1/2)
     
     return result
 #fname_or = "_co"
-fname_or = "_ng"
+#fname_or = "_ng"
 
 
 #fname = "./b2fgmtry_ng"
