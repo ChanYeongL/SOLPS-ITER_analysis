@@ -146,6 +146,7 @@ def data(input_path,input_name,spec):
 	ns_nx_ny = str(ns*(nx+2)*(ny+2))
 	ns_nx_ny2 = str(ns*(nx+2)*(ny+2)*2)
 	#print(check_length[2])
+	selected_data_final =[]
 	if check_length[2] == '3724':
 		selected_data_final = selected_data_merged_deleted.reshape(ny+2,nx+2)
 	elif check_length[2]== '7448':
@@ -156,7 +157,7 @@ def data(input_path,input_name,spec):
 		selected_data_final = selected_data_merged_deleted.reshape(ns, ny+2,nx+2)
 	elif check_length[2]== ns_nx_ny2:
 		selected_data_final = selected_data_merged_deleted.reshape(ns,2, ny+2,nx+2)
-
+  
 	return(selected_data_final)
 
 
